@@ -56,7 +56,9 @@ $(window).load(function(){
 
 
 $('#countdown').countdown({
-	date: "October 1, 2021 00:00:00",
+	// y = ${new Date().getFullYear()},
+	// year: y ,
+	date : "October 1, 2022 00:00:00",
 	render: function(data) {
 	  var el = $(this.el);
 	  el.empty()

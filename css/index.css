@@ -3473,7 +3473,7 @@ h1.page-title + .tag-cloud-list {
 #page-header {
   position: relative;
   width: 100%;
-  background-color: #49b1f5;
+  background-color: var(--card-bg);
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -3483,13 +3483,6 @@ h1.page-title + .tag-cloud-list {
   -ms-transition: all 0.5s;
   transition: all 0.5s;
 }
-#page-header:not(.not-top-img):before {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0,0,0,0.3);
-  content: '';
-}
 #page-header.full_page {
   height: 100vh;
   background-attachment: fixed;
@@ -3497,14 +3490,14 @@ h1.page-title + .tag-cloud-list {
 #page-header.full_page #site-info {
   position: absolute;
   top: 43%;
-  padding: 0 10px;
+  padding: 0 0.5rem;
   width: 100%;
 }
 #page-header #site-title,
 #page-header #site-subtitle,
 #page-header #scroll-down .scroll-down-effects {
   text-align: center;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.15);
+  text-shadow: 0.1rem 0.1rem 0.2rem rgba(0,0,0,0.15);
   line-height: 1.5;
 }
 #page-header #site-title {
@@ -3529,7 +3522,7 @@ h1.page-title + .tag-cloud-list {
 #page-header #site_social_icons {
   display: none;
   margin: 0 auto;
-  width: 300px;
+  width: 15rem;
   text-align: center;
 }
 @media screen and (max-width: 768px) {
@@ -3538,10 +3531,11 @@ h1.page-title + .tag-cloud-list {
   }
 }
 #page-header #site_social_icons .social-icon {
-  margin: 0 10px;
+  margin: 0 0.5rem;
   color: var(--light-grey);
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.15);
+  text-shadow: 0.1rem 0.1rem 0.2rem rgba(0,0,0,0.15);
   font-size: 1.43em;
+  cursor: pointer;
 }
 #page-header #scroll-down {
   position: absolute;
@@ -3556,56 +3550,76 @@ h1.page-title + .tag-cloud-list {
   font-size: 30px;
 }
 #page-header.not-home-page {
-  height: 400px;
+  height: 20rem;
 }
 @media screen and (max-width: 768px) {
   #page-header.not-home-page {
-    height: 280px;
+    height: 14rem !important;
   }
 }
 #page-header #page-site-info {
   position: absolute;
-  top: 200px;
-  padding: 0 10px;
+  top: 10rem;
+  padding: 0 0.5rem;
   width: 100%;
 }
 @media screen and (max-width: 768px) {
   #page-header #page-site-info {
-    top: 140px;
+    top: 7rem !important;
   }
 }
 #page-header.post-bg {
-  height: 400px;
+  height: 20rem;
 }
 @media screen and (max-width: 768px) {
   #page-header.post-bg {
-    height: 360px;
+    height: 18rem;
   }
 }
 #page-header.post-bg:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
   background-color: rgba(0,0,0,0.5);
+  content: '';
 }
 #page-header #post-info {
   position: absolute;
-  bottom: 100px;
+  bottom: 5rem;
   padding: 0 8%;
   width: 100%;
   text-align: center;
 }
 @media screen and (max-width: 900px) {
   #page-header #post-info {
-    bottom: 30px;
+    bottom: 1.5rem;
     text-align: left;
   }
 }
 @media screen and (max-width: 768px) {
   #page-header #post-info {
-    bottom: 22px;
-    padding: 0 22px;
+    bottom: 1.1rem;
+    padding: 0 1.1rem;
+  }
+}
+#page-header.has-video {
+  position: relative;
+  height: 80vh !important;
+}
+#page-header.has-video #page-site-info {
+  z-index: 2;
+  top: 15rem;
+}
+@media screen and (max-width: 768px) {
+  #page-header.has-video {
+    height: 14rem !important;
   }
 }
 #page-header.not-top-img {
-  margin-bottom: 10px;
+  margin-bottom: 0.5rem;
   height: 60px;
   background: 0;
 }
@@ -3662,14 +3676,19 @@ h1.page-title + .tag-cloud-list {
   -ms-transition: top 0.5s;
   transition: top 0.5s;
 }
+_::-webkit-full-page-media,
+_:future,
+:root #page-header.full_page {
+  background-attachment: scroll !important;
+}
 #page h1.page-title {
-  margin: 8px 0 20px;
+  margin: 0.4rem 0 1rem;
 }
 #post > #post-info {
-  margin-bottom: 30px;
+  margin-bottom: 1.5rem;
 }
 #post > #post-info .post-title {
-  padding-bottom: 4px;
+  padding-bottom: 0.2rem;
   border-bottom: 1px solid var(--light-grey);
   color: var(--text-highlight-color);
 }
@@ -3681,7 +3700,7 @@ h1.page-title + .tag-cloud-list {
   color: #78818a;
 }
 #post-info .post-title {
-  margin-bottom: 8px;
+  margin-bottom: 0.4rem;
   color: var(--white);
   font-weight: normal;
   font-size: 2.5em;
@@ -3690,11 +3709,11 @@ h1.page-title + .tag-cloud-list {
 }
 @media screen and (max-width: 768px) {
   #post-info .post-title {
-    font-size: 2.1em;
+    font-size: 1.72em;
   }
 }
 #post-info .post-title .post-edit-link {
-  padding-left: 10px;
+  padding-left: 0.5rem;
 }
 #post-info #post-meta {
   color: var(--light-grey);
@@ -3715,13 +3734,13 @@ h1.page-title + .tag-cloud-list {
   }
 }
 #post-info #post-meta .post-meta-separator {
-  margin: 0 5px;
+  margin: 0 0.25rem;
 }
 #post-info #post-meta .post-meta-icon {
-  margin-right: 4px;
+  margin-right: 0.2rem;
 }
 #post-info #post-meta .post-meta-label {
-  margin-right: 4px;
+  margin-right: 0.2rem;
 }
 #post-info #post-meta a {
   color: var(--light-grey);
@@ -3745,6 +3764,12 @@ h1.page-title + .tag-cloud-list {
   display: -ms-flexbox;
   display: box;
   display: flex;
+  -webkit-box-lines: multiple;
+  -moz-box-lines: multiple;
+  -o-box-lines: multiple;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
   -webkit-box-align: center;
   -moz-box-align: center;
   -o-box-align: center;
@@ -3785,7 +3810,7 @@ h1.page-title + .tag-cloud-list {
 }
 #nav #toggle-menu {
   display: none;
-  padding: 2px 0 0 6px;
+  padding: 0.1rem 0 0 0.3rem;
   vertical-align: top;
 }
 #nav #toggle-menu:hover {
@@ -3798,7 +3823,7 @@ h1.page-title + .tag-cloud-list {
   color: var(--white);
 }
 #nav #site-name {
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.15);
+  text-shadow: 0.1rem 0.1rem 0.2rem rgba(0,0,0,0.15);
   font-weight: bold;
   cursor: pointer;
 }
@@ -3808,19 +3833,19 @@ h1.page-title + .tag-cloud-list {
 #nav .menus_items .menus_item {
   position: relative;
   display: inline-block;
-  padding: 0 0 0 14px;
+  padding: 0 0 0 0.7rem;
 }
 #nav .menus_items .menus_item:hover .menus_item_child {
   display: block;
 }
-#nav .menus_items .menus_item:hover > a > i:last-child {
-  -webkit-transform: rotate(180deg);
-  -moz-transform: rotate(180deg);
-  -o-transform: rotate(180deg);
-  -ms-transform: rotate(180deg);
-  transform: rotate(180deg);
+#nav .menus_items .menus_item:hover i.expand {
+  -webkit-transform: rotate(180deg) !important;
+  -moz-transform: rotate(180deg) !important;
+  -o-transform: rotate(180deg) !important;
+  -ms-transform: rotate(180deg) !important;
+  transform: rotate(180deg) !important;
 }
-#nav .menus_items .menus_item > a > i:last-child {
+#nav .menus_items .menus_item i.expand {
   padding: 4px;
   -webkit-transition: -webkit-transform 0.3s;
   -moz-transition: -moz-transform 0.3s;
@@ -3843,7 +3868,6 @@ h1.page-title + .tag-cloud-list {
   -o-animation: sub_menus 0.3s 0.1s ease both;
   -ms-animation: sub_menus 0.3s 0.1s ease both;
   animation: sub_menus 0.3s 0.1s ease both;
-  border-radius: 5px;
 }
 #nav .menus_items .menus_item .menus_item_child:before {
   position: absolute;
@@ -3859,15 +3883,9 @@ h1.page-title + .tag-cloud-list {
 #nav .menus_items .menus_item .menus_item_child li:hover {
   background: var(--text-bg-hover);
 }
-#nav .menus_items .menus_item .menus_item_child li:first-child {
-  border-radius: 5px 5px 0 0;
-}
-#nav .menus_items .menus_item .menus_item_child li:last-child {
-  border-radius: 0 0 5px 5px;
-}
 #nav .menus_items .menus_item .menus_item_child li a {
   display: inline-block;
-  padding: 8px 16px;
+  padding: 0.3rem 0.7rem;
   width: 100%;
   color: var(--font-color) !important;
   text-shadow: none !important;
@@ -3879,19 +3897,24 @@ h1.page-title + .tag-cloud-list {
   font-size: inherit;
 }
 #nav.hide-menu .menus_items {
-  display: none;
+  position: absolute;
+  left: 0;
+  visibility: hidden;
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
 }
 #nav.hide-menu #search-button span {
-  display: none;
+  display: none !important;
 }
 #nav #search-button {
   display: inline;
-  padding: 0 0 0 14px;
+  padding: 0 0 0 0.7rem;
 }
 #nav .site-page {
   position: relative;
-  padding-bottom: 6px;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+  padding-bottom: 0.3rem;
+  text-shadow: 0.05rem 0.05rem 0.1rem rgba(0,0,0,0.3);
   font-size: 0.78em;
   cursor: pointer;
 }

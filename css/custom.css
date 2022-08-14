@@ -186,3 +186,28 @@ body,
     font-family: nkupp !important;
 }
 
+
+/* 自定义标题头部添加视频 */
+#index-video {
+    z-index: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 80vh;
+    width: 100%;
+    object-fit: cover;
+}
+@media only screen and (max-width: 768px) {
+    #index-video {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .bg-cover {
+        background-image: none !important;
+    }
+}
+
+
+

@@ -2,6 +2,33 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://nkupp.com/post/4c99eb71.html</loc>
+    
+    <lastmod>2022-08-14</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://nkupp.com/post/9d426f4c.html</loc>
+    
+    <lastmod>2022-08-14</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://nkupp.com/tags/index.html</loc>
+    
+    <lastmod>2022-08-14</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://nkupp.com/messageboard/index.html</loc>
     
     <lastmod>2022-08-14</lastmod>
@@ -39,15 +66,6 @@
   
   <url>
     <loc>https://nkupp.com/post/85b83acc.html</loc>
-    
-    <lastmod>2022-08-06</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://nkupp.com/post/9d426f4c.html</loc>
     
     <lastmod>2022-08-06</lastmod>
     
@@ -138,15 +156,6 @@
   
   <url>
     <loc>https://nkupp.com/post/86024bd5.html</loc>
-    
-    <lastmod>2022-08-06</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://nkupp.com/post/4c99eb71.html</loc>
     
     <lastmod>2022-08-06</lastmod>
     
@@ -254,15 +263,6 @@
   </url>
   
   <url>
-    <loc>https://nkupp.com/tags/index.html</loc>
-    
-    <lastmod>2019-12-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://nkupp.com/categories/index.html</loc>
     
     <lastmod>2019-12-16</lastmod>
@@ -296,13 +296,6 @@
   
   <url>
     <loc>https://nkupp.com/tags/%E6%97%A5%E8%AE%B0/</loc>
-    <lastmod>2022-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://nkupp.com/tags/%E7%A6%8F%E5%88%A9/</loc>
     <lastmod>2022-08-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -343,6 +336,13 @@
     <priority>0.2</priority>
   </url>
   
+  <url>
+    <loc>https://nkupp.com/tags/%E7%A6%8F%E5%88%A9/</loc>
+    <lastmod>2022-08-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
 
   
   <url>
@@ -360,7 +360,7 @@
   </url>
   
   <url>
-    <loc>https://nkupp.com/categories/%E6%97%A5%E8%AE%B0/</loc>
+    <loc>https://nkupp.com/categories/Scriptable/</loc>
     <lastmod>2022-08-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -375,6 +375,13 @@
   
   <url>
     <loc>https://nkupp.com/categories/%E6%B4%BB%E5%8A%A8/</loc>
+    <lastmod>2022-08-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://nkupp.com/categories/%E6%97%A5%E8%AE%B0/</loc>
     <lastmod>2022-08-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

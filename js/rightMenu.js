@@ -1,5 +1,5 @@
-let rm = {};
-rm.showRightMenu = function (isTrue, x = 0, y = 0) {
+let rmi = {};
+rmi.showRightMenu = function (isTrue, x = 0, y = 0) {
     let $rightMenu = $('#rightMenu');
     $rightMenu.css('top', x + 'px').css('left', y + 'px');
 
@@ -12,7 +12,7 @@ rm.showRightMenu = function (isTrue, x = 0, y = 0) {
 };
 let rmWidth = $('#rightMenu').width();
 let rmHeight = $('#rightMenu').height();
-rm.reloadrmSize = function () {
+rmi.reloadrmSize = function () {
     rmWidth = $("#rightMenu").width();
     rmHeight = $("#rightMenu").height()
 };
@@ -25,20 +25,20 @@ window.oncontextmenu = function (event) {
         let $rightMenuReadmode = $("#menu-readmode");
         $rightMenuNormal.show();
         $rightMenuOther.show();
-        rm.reloadrmSize();
+        rmi.reloadrmSize();
         if (pageX + rmWidth > window.innerWidth) {
             pageX -= rmWidth;
         }
         if (pageY + rmHeight > window.innerHeight) {
             pageY -= rmHeight;
         }
-        rm.showRightMenu(true, pageY, pageX);
+        rmi.showRightMenu(true, pageY, pageX);
         $('#rightmenu-mask').attr('style', 'display: flex');
         return false;
     }
 };
 function removeRightMenu() {
-    rm.showRightMenu(false);
+    rmi.showRightMenu(false);
     $('#rightmenu-mask').attr('style', 'display: none');
 }
 function stopMaskScroll() {

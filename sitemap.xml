@@ -343,14 +343,14 @@
   </url>
   
   <url>
-    <loc>https://nkupp.com/tags/Scriptable/</loc>
+    <loc>https://nkupp.com/tags/ChatGPT/</loc>
     <lastmod>2023-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://nkupp.com/tags/ChatGPT/</loc>
+    <loc>https://nkupp.com/tags/Scriptable/</loc>
     <lastmod>2023-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -415,6 +415,20 @@
   </url>
   
   <url>
+    <loc>https://nkupp.com/categories/%E5%BF%AB%E6%8D%B7%E6%8C%87%E4%BB%A4/</loc>
+    <lastmod>2023-04-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://nkupp.com/categories/%E9%9D%92%E9%BE%99/</loc>
+    <lastmod>2023-04-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://nkupp.com/categories/ChatGPT/</loc>
     <lastmod>2023-04-08</lastmod>
     <changefreq>weekly</changefreq>
@@ -429,21 +443,7 @@
   </url>
   
   <url>
-    <loc>https://nkupp.com/categories/%E9%9D%92%E9%BE%99/</loc>
-    <lastmod>2023-04-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://nkupp.com/categories/%E6%B4%BB%E5%8A%A8/</loc>
-    <lastmod>2023-04-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://nkupp.com/categories/%E5%BF%AB%E6%8D%B7%E6%8C%87%E4%BB%A4/</loc>
     <lastmod>2023-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

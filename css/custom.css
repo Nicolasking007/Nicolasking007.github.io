@@ -295,7 +295,7 @@ body::-webkit-scrollbar {
 /* 公众号 Start */
 
 [data-theme='light'] #aside-content .card-widget#card-wechat {
-    background: #49b1f5 !important;
+    background: #57bd6a !important;
 }
 
 #aside-content .card-widget#card-wechat {
@@ -361,7 +361,7 @@ body::-webkit-scrollbar {
     -webkit-transform: rotateY(180deg);
     transform: rotateY(180deg);
     box-sizing: border-box;
-    background: url(https://s1.ax1x.com/2023/04/08/pp72KAS.png) center center no-repeat;
+    background: url(https://img1.imgtp.com/2023/04/09/9xbJozdF.png) center center no-repeat;
     background-size: 100%;
 }
 

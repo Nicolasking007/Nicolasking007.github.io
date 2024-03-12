@@ -1,0 +1,368 @@
+#article-container h1:before,
+#article-container h2:before,
+#article-container h3:before,
+#article-container h4:before,
+#article-container h5:before,
+#article-container h6:before,
+#post .post-outdate-notice:before,
+.fontawesomeIcon,
+.note:not(.no-icon)::before,
+hr:before {
+    display: inline-block;
+    font-weight: 600;
+    font-style: normal;
+    font-variant: normal;
+    font-family: 'Font Awesome 5 Free';
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased
+}
+#article-container h1:before,
+#article-container h2:before,
+#article-container h3:before,
+#article-container h4:before,
+#article-container h5:before,
+#article-container h6:before {
+    position: absolute;
+    color: #f47466;
+    /* 回形针 */
+    content: '\f0c1';  
+    line-height: 1;
+    -webkit-transition: all .2s ease-out;
+    -moz-transition: all .2s ease-out;
+    -o-transition: all .2s ease-out;
+    -ms-transition: all .2s ease-out;
+    transition: all .2s ease-out;
+    /* 若要使用风车效果，请去掉下面的注释 */
+    content: '\f863'; 
+    animation: avatar_turn_around 1s linear infinite;
+}
+#article-container h1 {
+    padding-left: 1.4rem
+}
+
+#article-container h1 code {
+    font-size: 1rem
+}
+
+#article-container h1:before {
+    margin-left: -1.3rem;
+    top: calc(50% - .5rem);
+    font-size: 1rem
+}
+
+#article-container h1:hover {
+    padding-left: 1.6rem
+}
+
+#article-container h2 {
+    padding-left: 1.3rem
+}
+
+#article-container h2 code {
+    font-size: .9rem
+}
+
+#article-container h2:before {
+    margin-left: -1.4rem;
+    top: calc(50% - .45rem);
+    font-size: .9rem
+}
+
+#article-container h2:hover {
+    padding-left: 1.5rem
+}
+
+#article-container h3 {
+    padding-left: 1.2rem
+}
+
+#article-container h3 code {
+    font-size: .8rem;
+    top: calc(50% - .4rem);
+
+}
+
+#article-container h3:before {
+    margin-left: -1.2rem;
+    top: calc(50% - .4rem);
+    font-size: .8rem
+}
+
+#article-container h3:hover {
+    padding-left: 1.4rem
+}
+
+#article-container h4 {
+    padding-left: 1.1rem
+}
+
+#article-container h4 code {
+    font-size: .7rem
+}
+
+#article-container h4:before {
+    margin-left: -1rem;
+    top: calc(50% - .35rem);
+    font-size: .7rem
+}
+
+#article-container h4:hover {
+    padding-left: 1.3rem
+}
+
+#article-container h5 {
+    padding-left: 1rem
+}
+
+#article-container h5 code {
+    font-size: .6rem
+}
+
+#article-container h5:before {
+    margin-left: -.8rem;
+    top: calc(50% - .3rem);
+    font-size: .6rem
+}
+
+#article-container h5:hover {
+    padding-left: 1.2rem
+}
+
+#article-container h6 {
+    padding-left: 1rem
+}
+
+#article-container h6 code {
+    font-size: .6rem
+}
+
+#article-container h6:before {
+    margin-left: -.8rem;
+    top: calc(50% - .3rem);
+    font-size: .6rem
+}
+
+#article-container h6:hover {
+    padding-left: 1.2rem
+}
+
+
+
+/* 滚动条 */
+
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 2em;
+    /* background-color: rgba(73, 177, 245, .2); */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgb(255 255 255 / .3);
+    background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.1) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.1) 75%, transparent 75%, transparent);
+    border-radius: 2em
+}
+
+::-webkit-scrollbar-corner {
+    background-color: transparent
+}
+
+/* 自定义字体 */
+
+@font-face {
+    font-family: 'nkupp';
+    /* 字体名自定义即可 */
+    src: url('https://fastly.jsdelivr.net/gh/tzy13755126023/BLOG_SOURCE/font/ZhuZiAWan.woff2');
+    /* 字体文件路径 */
+    font-display: swap;
+}
+
+body,
+.gitcalendar {
+    font-family: nkupp !important;
+}
+
+
+/* 自定义标题头部添加视频 */
+#index-video {
+    z-index: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 80vh;
+    width: 100%;
+    object-fit: cover;
+}
+@media only screen and (max-width: 768px) {
+    #index-video {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .bg-cover {
+        background-image: none !important;
+    }
+}
+
+
+
+/* 自定义猫一键置顶 */
+
+
+body::-webkit-scrollbar {
+    width: 0;
+}
+
+.neko {
+    width: 64px;
+    height: 64px;
+    background-image: url("https://bu.dusays.com/2022/07/20/62d812db74be9.png");
+    position: absolute;
+    right: 32px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    transform: translateX(50%);
+    cursor: pointer;
+    font-family: tzy;
+    font-weight: 600;
+    font-size: 16px;
+    color: #6f42c1;
+    display: none;
+}
+
+.neko::after {
+    display: none;
+    width: 100px;
+    height: 100px;
+    background-image: url("https://bu.dusays.com/2022/07/20/62d812d95e6f5.png");
+    background-size: contain;
+    z-index: 9999;
+    position: absolute;
+    right: 50%;
+    text-align: center;
+    line-height: 100px;
+    top: -115%;
+
+}
+
+.neko.showMsg::after {
+    content: attr(data-msg);
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.neko:hover::after {
+    content: attr(data-msg);
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.neko.fontColor::after {
+    color: #333;
+}
+
+/**
+ * @description: 滚动条样式  跟猫二选一
+ */
+@media screen and (max-width:992px) {
+    ::-webkit-scrollbar {
+        width: 8px !important;
+        height: 8px !important
+    }
+
+    ::-webkit-scrollbar-track {
+        border-radius: 2em;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: rgb(255 255 255 / .3);
+        background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.1) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.1) 75%, transparent 75%, transparent);
+        border-radius: 2em
+    }
+
+    ::-webkit-scrollbar-corner {
+        background-color: transparent
+    }
+}
+
+/* 公众号 Start */
+
+[data-theme='light'] #aside-content .card-widget#card-wechat {
+    background: #57bd6a !important;
+}
+
+#aside-content .card-widget#card-wechat {
+    background: var(--card-bg);
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    padding: 0;
+    cursor: pointer !important;
+    border: none;
+    height: 110px;
+}
+
+/* 如果你设置了aside 的 mobile 为 false，记得放开下面这段注释；
+   如果你设置了aside 的 mobile 为 true ，不需要改动。 */
+
+/* @media screen and (max-width: 768px) {
+    #aside-content .card-widget#card-wechat {
+        display: none !important;
+    }
+} */
+
+@media screen and (min-width: 1300px) {
+    #aside-content .card-widget {
+        margin-top: 1rem;
+    }
+}
+
+#flip-wrapper {
+    -webkit-perspective: 1000;
+    perspective: 1000;
+    position: relative;
+    width: 235px;
+    height: 110px;
+    z-index: 1;
+}
+
+#flip-wrapper:hover #flip-content {
+    -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+
+#flip-content {
+    width: 100%;
+    height: 100%;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    transition: cubic-bezier(0, 0, 0, 1.29) 0.3s;
+}
+
+.face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    background: url(https://img.zhheo.com/i/2022/08/31/630efc6e3e794.png) center center no-repeat;
+    background-size: 100%;
+}
+
+.back.face {
+    display: block;
+    -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+    box-sizing: border-box;
+    background: url(https://img1.imgtp.com/2023/04/09/9xbJozdF.png) center center no-repeat;
+    background-size: 100%;
+}
+
+/* 公众号 End */

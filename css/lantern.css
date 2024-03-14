@@ -51,7 +51,7 @@
 /* 修改灯笼的字体 */
 
 .d-box .d1::after {
-    content: '兔年大吉';
+    content: '龙年大吉';
 }
 
 .d-box1 .d1::after {

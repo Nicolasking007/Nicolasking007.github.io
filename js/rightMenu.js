@@ -1,4 +1,6 @@
-let rmi = {};
+let rmi = {}; // 只声明一次
+
+// 继续使用 'rmi' 对象
 rmi.showRightMenu = function (isTrue, x = 0, y = 0) {
     let $rightMenu = $('#rightMenu');
     $rightMenu.css('top', x + 'px').css('left', y + 'px');
@@ -10,12 +12,15 @@ rmi.showRightMenu = function (isTrue, x = 0, y = 0) {
         $rightMenu.hide();
     }
 };
-let rmWidth = $('#rightMenu').width();
-let rmHeight = $('#rightMenu').height();
+
+// let rmWidth = $('#rightMenu').width();
+// let rmHeight = $('#rightMenu').height();
+
 rmi.reloadrmSize = function () {
     rmWidth = $("#rightMenu").width();
     rmHeight = $("#rightMenu").height()
 };
+
 window.oncontextmenu = function (event) {
     if (document.body.clientWidth > 768) {
         let pageX = event.clientX + 10;	
@@ -37,10 +42,12 @@ window.oncontextmenu = function (event) {
         return false;
     }
 };
+
 function removeRightMenu() {
     rmi.showRightMenu(false);
     $('#rightmenu-mask').attr('style', 'display: none');
 }
+
 function stopMaskScroll() {
     if (document.getElementById("rightmenu-mask")) {
         let xscroll = document.getElementById("rightmenu-mask");

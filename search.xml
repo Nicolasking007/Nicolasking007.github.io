@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>移动吉比特H5-9光猫获取超级管理员权限</title>
+      <link href="/post/53f392e1.html"/>
+      <url>/post/53f392e1.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="开启telnet权限"><a href="#开启telnet权限" class="headerlink" title="开启telnet权限"></a>开启telnet权限</h2><ol><li>先用普通用户账号进行正常登录后</li><li>在浏览器打开下面链接<code>http://192.168.1.1/usr=CMCCAdmin&amp;psw=aDm8H%25MdA&amp;cmd=1&amp;telnet.gch</code>,页面提示<code>success</code>表示开启<code>telnet</code>权限成功</li></ol><h2 id="telnet进入光猫"><a href="#telnet进入光猫" class="headerlink" title="telnet进入光猫"></a>telnet进入光猫</h2><blockquote><p>前提window电脑开启telnet权限</p></blockquote><ol><li>CMD下输入<br><code>telnet 192.168.1.1</code></li><li>依次输入账号: <code>CMCCAdmin</code> 密码: <code>aDm8H%MdA</code></li><li>修改超级管理员密码<br><code>sidbg 1 DB set DevAuthInfo 0 Pass aDm8H%MdA</code></li><li>保存修改的配置<br><code>sidbg 1 DB save</code></li></ol><h2 id="超级管理员账号进入光猫"><a href="#超级管理员账号进入光猫" class="headerlink" title="超级管理员账号进入光猫"></a>超级管理员账号进入光猫</h2><ol><li>依次输入账号: <code>CMCCAdmin</code> 密码: <code>aDm8H%MdA</code></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 家庭网络 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 家庭网络 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>基于 Scriptable 从零开始美化iOS桌面（六）</title>
       <link href="/post/cb4d9ecb.html"/>
       <url>/post/cb4d9ecb.html</url>

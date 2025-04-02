@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>𝑵𝑲'𝒔 Json在线解析</title>
+    <meta charset="utf-8" />
+    <link rel="icon" href="../images/favicon.ico"/>
+    <meta name="keywords" content="json,json在线解析,json格式化,json格式验证,json数组"/>
+    <meta name="description" content="一款简洁优雅的在线json解析器，可能是目前最好用的json在线查看工具"/>
+    <link href="https://cdn.jsdelivr.net/gh/Nicolasking007/CDN/css/jsonon/hint.min.css" rel="stylesheet">
+    <!-- <link href="https://cdn.jsdelivr.net/gh/Nicolasking007/CDN/css/jsonon/diffview.css" rel="stylesheet"> -->
+    <link href="https://cdn.jsdelivr.net/gh/Nicolasking007/CDN/css/jsonon/loading.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/gh/Nicolasking007/CDN/css/jsonon/main.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <div id="app">
+      <div class="side-top"> 
+        <a class="logo"   href="/">
+          <span class="on">𝑵𝑲'𝒔</span><span >Jsonon</span>
+        </a>  
+        <span class="slogan">
+          「也许」是最好用的JSON格式化验证工具
+        </span>
+
+        <div class="top-right">
+          <a href="https://nkupp.com/cdn/select/" target="_blank">
+         前往𝑵𝑲'𝒔 Select
+          </a>
+        </div>
+      </div>
+      
+      <div :class="'side-left side-view-' + baseview">
+        <div class="left-panel">
+          <textarea  v-model="jsoncon"></textarea>  
+          <div class="label" v-show="baseview == 'diff'">原 JSON</div>       
+        </div>
+        <div  class="left-panel"  v-show="baseview == 'diff'">
+          <textarea  v-model="newjsoncon"></textarea>  
+          <div class="label">新 JSON</div>       
+        </div>
+      </div>
+
+      <div class="splitx" ></div>
+
+      <div class="side-right">
+        <div class="right-inner">
+          <div class="right-bar">
+            <div class="pull-left">
+              <a href="javascript:void(0)" @click="compress()" class="hint--top"  data-hint="压缩">
+                <svg  v-bind:class="'icon  active-' + (view == 'compress')" >
+                  <use xlink:href="svg/icon.svg#database"></use>
+                </svg>
+              </a>
+
+              <a href="javascript:void(0)" class="hint--top"  data-hint="美化"  @click="beauty()">
+                <svg class="icon">
+                  <use xlink:href="svg/icon.svg#beauty"></use>
+                </svg>
+              </a>
+
+              <a href="javascript:void(0)" class="hint--top"  data-hint="清空"  @click="clearAll()">
+                <svg class="icon">
+                  <use xlink:href="svg/icon.svg#clear"></use>
+                </svg>
+              </a>
+
+              <a href="javascript:void(0)" class="hint--top"  data-hint="导出文本文件"   @click="isExportTxtShow = true">
+                <svg class="icon">
+                  <use xlink:href="svg/icon.svg#export-txt"></use>
+                </svg>
+              </a>
+
+              <a href="javascript:void(0)" class="hint--top"  data-hint="全部展开"  @click="expandAll()">
+                <svg class="icon" >
+                  <use xlink:href="svg/icon.svg#expand"></use>
+                </svg>
+              </a>
+
+              <a  href="javascript:void(0)" class="hint--top"  data-hint="全部折叠" @click="collapseAll()">
+                <svg class="icon"  >
+                  <use xlink:href="svg/icon.svg#collapse"></use>
+                </svg>
+              </a>
+            </div>  
+            <div class="pull-right">
+              <div class="loader" v-show="isSharing">
+                <div class="ball-pulse-sync">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>
+              </div>
+
+              <a class="hint--top save-tool copy-btn"  data-hint="分享" href="javascript:void(0)" @click="share" data-clipboard-target="#share-input" v-show="!isSharing">
+                <svg class="icon">
+                  <use xlink:href="svg/icon.svg#share"></use>
+                </svg>
+              </a>
+
+              <span class="pop-btn"  v-show="historys.length > 0">
+                <a class="hint--top"  data-hint="历史保存" href="javascript:void(0)">
+                  <svg class="icon">
+                    <use xlink:href="svg/icon.svg#record"></use>
+                  </svg>
+                </a>
+                <ul class="historys pop">
+                  <li v-for="(his, index) in historys">
+                    <a href="javascript:void(0)" @click="restore(his)"  > {{his.name}}</a>
+
+                    <svg class="icon" @click="remove(his, index)">
+                      <use xlink:href="svg/icon.svg#trash"></use>
+                    </svg>
+                  </li>
+                </ul>
+              </span>    
+              <a class="hint--top save-tool"  data-hint="保存" href="javascript:void(0)" @click="isSaveShow = true">
+              <svg class="icon">
+                <use xlink:href="svg/icon.svg#save"></use>
+              </svg>
+              </a>
+
+              <span class="pop-btn">
+                <a class="hint--top"  data-hint="换肤" href="javascript:void(0)" @click="isThemeShow = true">
+                  <svg class="icon">
+                    <use xlink:href="svg/icon.svg#theme"></use>
+                  </svg>
+                </a>
+                <div class="themes pop">
+                  <div :class="'theme-item ' + (index === checkedTheme)" v-for="(theme, index) in themes" @click="switchTheme(index)">
+                    <span class="theme-color" v-for="color in theme" :style="{backgroundColor: color}" ></span>
+                  </div>
+                </div>
+              </span>
+            </div> 
+
+            <!-- 用作复制的隐藏文本域 -->
+            <div style="position: absolute; top: -100000px">
+              <input id="share-input" :value="shareUrl(shareKey)">
+            </div>
+          </div>
+
+
+          <!--格式化视图-->
+          <div class="right-main" v-show="baseview == 'formater' && view != 'error'">
+
+            <!--正常JSON格式化视图-->
+            <div class="view-code"  v-show="view == 'code'">
+              <vue-outer :jsondata="jsonhtml" isend="true" :theme="theme"></vue-outer>
+            </div>
+
+            <!--空视图-->
+            <div class="view-code"  v-show="view == 'empty'">
+            </div> 
+
+            <!--压缩视图-->
+            <textarea v-show="view == 'compress'">{{compressStr}}</textarea>
+            
+          </div>
+
+
+          <!--格式化错误视图-->
+          <div class="view-error" v-show="view == 'error'">
+            <pre v-cloak>{{error.msg}}</pre>
+          </div>
+
+          <!--diff视图-->
+          <!-- <div id="diffoutput" v-show="baseview == 'diff' && view != 'error'">
+
+          </div> -->
+          
+        </div>
+      </div>
+
+      <!--弹出保存框-->
+      <div class="save-box" v-show="isSaveShow">
+        <svg class="icon close-icon" @click="isSaveShow = false">
+          <use xlink:href="svg/icon.svg#close"></use>
+        </svg>
+
+        <input type="text" placeholder="请输入辨识名称" v-model="history.name" />
+        <button   @click="save()" >保存</button>
+      </div>
+
+      <!--弹出下载文本框-->
+      <div class="save-box" v-show="isExportTxtShow">
+        <svg class="icon close-icon" @click="isExportTxtShow = false">
+          <use xlink:href="svg/icon.svg#close"></use>
+        </svg>
+
+        <label>.txt</label>
+
+        <input type="text" placeholder="请输入辨识名称" v-model="exTxt.name" />
+        <button @click="exportTxt()">下载</button>
+      </div>
+      
+    </div>    
+
+    <!--用于移动的时候遮住文本域 避免被选中-->
+    <div class="widnow-cover">
+    </div> 
+
+    
+
+    <!--最外层根结构-->
+    <script type="text/x-template" id="outer-template">
+      <ul class="json-item">
+        <vue-val  :val="jsondata" :isend="isend" :theme="theme"></vue-val>
+      </ul>
+    </script>
+
+    <!--内层每个键值对-->
+    <script type="text/x-template" id="item-template">
+      <ul class="json-item">
+        <vue-val :field="key" :theme="theme" :val="val" :isend="index == objLength(jsondata) - 1" v-for="(val, key, index) in jsondata"></vue-val>
+      </ul>
+    </script>
+
+    <!--key value 最终的渲染方式-->
+    <script type="text/x-template" id="val-template">
+      <div class="keyval">
+        <template v-if="!isObjectArr(val)">
+          <span class="key" v-show="field" v-bind:style="{color: theme.key}">"{{field}}": </span>
+          <span  v-bind:class="'val val-' + getTyp(val)" v-bind:style="{color: theme[getTyp(val)]}">
+            <span v-if="!isaLink(val)">{{formatVal(val)}}</span>
+            <a v-if="isaLink(val)" :href="val" target="_blank" class="json-link" :style="{color: theme['link-link']}">{{formatVal(val)}}</a>
+            <span v-if="!isend">,</span>
+          </span>
+        </template>
+
+
+        <!--key + 展开折叠ICON-->
+        <template v-if="isObjectArr(val)">
+          <span class="key" v-bind:style="{color: theme.key}" v-show="field">"{{field}}": </span>
+          <vue-expand></vue-expand>
+        </template>
+
+
+        <!--值为对象时-->
+        <template v-if="getTyp(val) == 'Object'">
+          <span class="expand-view">
+            <span>{</span>
+            <vue-item :jsondata="val" :theme="theme"></vue-item>
+            <div class="brace-end">}<span v-if="!isend">,</span></div>
+          </span>  
+
+          <span class="fold-view">{{getTyp(val)}}{<label class="ex-alia" @click="expand($event)">{{objLength(val)}}</label>}<span v-if="!isend">,</span></span>
+        </template>
+
+
+        <!--值为数组时-->
+        <template v-if="getTyp(val) == 'Array'">
+          <span class="expand-view">
+            <span>[</span>
+            <span class="val">
+              <vue-outer :jsondata="sub" v-for="(sub, index) in val" :isend="index == val.length - 1" :theme="theme"></vue-outer>
+            </span> 
+            <div class="brace-end">]<span v-if="!isend">,</span></div>
+          </span>  
+
+          <span class="fold-view">{{getTyp(val)}}[<label class="arrlen ex-alia" @click="expand($event)">{{val.length}}</label>]<span v-if="!isend">,</span></span>
+
+        </template>
+      </div>
+    </script>
+    
+    <!--展开 折叠的 UI 组件-->
+    <script type="text/x-template" id="expand-template">
+      <span class="expand-wraper">
+        <svg class="icon icon-square icon-square-min" @click="fold($event)" title="折叠">
+          <use xlink:href="svg/icon.svg#minus-square"></use>
+        </svg>
+
+        <svg class="icon icon-square icon-square-plus" @click="expand($event)" title="展开">
+          <use xlink:href="svg/icon.svg#plus-square"></use>
+        </svg>
+      </span>
+    </script>
+ <!--
+               ▄              ▄
+              ▌▒█           ▄▀▒▌
+              ▌▒▒▀▄        ▀▒▒▒▐
+             ▐▄▀▒▒▀▀▀▀▄▄▄▀▒▒▒▒▒▐
+           ▄▄▀▒▒▒▒▒▒▒▒▒▒▒█▒▒▄█▒▐
+         ▄▀▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▒▒▒▒▒▐
+        ▐▒▒▒▄▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▀▄▒▒▌
+        ▌▒▒▐▄█▀▒▒▒▒▄▀█▄▒▒▒▒▒▒▒█▒▐
+       ▐▒▒▒▒▒▒▒▒▒▒▒▌██▀▒▒▒▒▒▒▒▒▀▄▌
+       ▌▒▀▄██▄▒▒▒▒▒▒▒▒▒▒▒░░░░▒▒▒▒▌
+       ▌▀▐▄█▄█▌▄▒▀▒▒▒▒▒▒░░░░░░▒▒▒▐
+      ▐▒▀▐▀▐▀▒▒▄▄▒▄▒▒▒  Teacher  ▒▌
+      ▐▒▒▒▀▀▄▄▒▒▒▄▒▒▒▒▒▒░░░░░░▒▒▒▐
+       ▌▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▒▒░░░░▒▒▒▒▌
+       ▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐
+        ▀ yo-du ▒▒▒▒▒▒▒▒▒▒▒▄▒▒▒▒▌
+          ▀▄▒▒▒▒▒▒▒▒▒▒▄▄▄▀▒▒▒▒▄▀
+         ▐▀▒▀▄▄▄▄▄▄▀▀▀▒▒▒▒▒▄▄▀
+        ▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▀▀
+
+        --hello，world！生活，从敲的第一行代码开始。祝您扒码愉快，有问题请留言-Nicolas-kings。
+    -->
+    
+
+
+    <script src="https://cdn.jsdelivr.net/gh/Nicolasking007/CDN/js/jsonon/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Nicolasking007/CDN/js/jsonon/jquery.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Nicolasking007/CDN/js/jsonon/jsonlint.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Nicolasking007/CDN/js/jsonon/parse.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Nicolasking007/CDN/js/jsonon/editor.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/gh/Nicolasking007/CDN/js/jsonon/diffview.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/gh/Nicolasking007/CDN/js/jsonon/localforage.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Nicolasking007/CDN/js/jsonon/FileSaver.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Nicolasking007/CDN/js/jsonon/uuid.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Nicolasking007/CDN/js/jsonon/clipboard.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Nicolasking007/CDN/js/jsonon/helper.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Nicolasking007/CDN/js/jsonon/main.js"></script>
+    
+    <!--访问统计  请换成自己的-->
+    <script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?7fada6c188e5a965a36b6e6c27ce463d";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+      })();
+      </script>
+  
+  </body>
+</html>

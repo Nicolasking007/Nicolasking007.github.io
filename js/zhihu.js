@@ -1,4 +1,4 @@
-fetch('https://api.vvhan.com/api/hotlist/zhihuHot').then(data=>data.json()).then((json)=>{
+fetch('https://api.nkupp.com/zhihu').then(data=>data.json()).then((json)=>{
     let html = ''
     html += '<div class="zhihu-list">'
     var i = 1 
